@@ -14,5 +14,19 @@ package q2
 
 func ProblemsSolved(answers [][3]bool) int {
 	// Seu código aqui
-	return 0
+  var perguntasRespondidas int
+  perguntasRespondidas = 0
+  for i:= 0; i<len(answers); i++ {
+    if answers[i][0] && answers[i][1] || answers[i][2] {
+      perguntasRespondidas++
+      continue
+    } else if answers[i][0] || answers[i][1] && answers[i][2] {
+      perguntasRespondidas++
+      continue
+    } else if answers[i][0] && answers[i][2] || answers[i][1] {
+      perguntasRespondidas++
+      continue
+    }
+  return perguntasRespondidas
+  }
 }
