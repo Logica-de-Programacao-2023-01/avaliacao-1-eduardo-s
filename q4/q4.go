@@ -10,6 +10,34 @@ package q4
 //Caso a lista possua apenas um elemento, a função deve retornar 3.
 
 func ClassifyPrices(prices []int) (int, error) {
-	// Seu código aqui
-	return 0, nil
+    contagem := 0
+    crescente := false
+    decrescente := false
+    aleatorio := false
+    if len(prices) == 0 {
+        return 0, fmt.Errorf("a slice é vazia")
+    } else if len(prices) == 1 {
+        return 3, nil
+    } else {
+        for i := 1; i < len(prices); i++ {
+            if prices[i] > prices[i-1] {
+                crescente = true
+		continue
+            } else if prices[i] < prices[i-1] {
+                decrescente = true
+		continue
+            } else {
+                aleatorio = true
+            }
+        }
+        if crescente && !decrescente && !aleatorio {
+            contagem = 1
+        } else if !crescente && decrescente && !aleatorio {
+            contagem = 2
+        } else {
+            contagem = 3
+        }
+        return contagem, nil
+    }
 }
+  
